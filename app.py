@@ -20,10 +20,10 @@ with st.expander("PROJECT DETAILS"):
 
     st.subheader('Data set')
     st.write('I used _"phishtank.org"_ & _"tranco-list.eu"_ as data sources.')
-    st.write('Totally 24000 websites ==> **_12000_ legitimate** websites | **_12000_ phishing** websites')
+    st.write('Totally 24228 websites ==> **_12001_ legitimate** websites | **_12227_ phishing** websites')
     st.write('Data set was created in January 2024.')
 
-    # ----- FOR THE PIE CHART ----- #
+    # ----- THE PIE CHART ----- #
     labels = 'Phishing', 'Legitimate'
     phishing_rate = int(ml.phishing_df.shape[0] / (ml.phishing_df.shape[0] + ml.legitimate_df.shape[0]) * 100)
     legitimate_rate = 100 - phishing_rate
