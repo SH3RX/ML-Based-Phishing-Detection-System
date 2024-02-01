@@ -66,9 +66,9 @@ with st.expander("PROJECT DETAILS"):
     st.write('NB --> Gaussian Naive Bayes')
 
 with st.expander('EXAMPLE PHISHING URLs:'):
-    st.write('_	https://gobpeposts.top/uQFYwz/_')
-    st.write('_https://att-mail-info-104416.weeblysite.com/_')
-    st.write('_https://i3d.net.ar/BT/BancoInternacional.html_')
+    st.write('_https://keepo.io/upate_')
+    st.write('_https://yoshiiremo.net/op1/tus_')
+    st.write('_https://hotm.art/c5Z8ty_')
     st.caption('INFORMATION: PHISHING WEB PAGES HAVE SHORT LIFECYCLE!')
 
 # Model selection
