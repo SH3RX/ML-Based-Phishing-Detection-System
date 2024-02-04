@@ -37,22 +37,6 @@ with st.expander("PROJECT DETAILS"):
 
     st.write('Features + URL + Label ==> Dataframe')
     st.markdown('Label is 1 for phishing, 0 for legitimate')
-    number = st.slider("Select row number to display", 0, 100)
-    st.dataframe(ml.legitimate_df.head(number))
-
-    @st.cache
-    def convert_df(df):
-        # IMPORTANT: Cache the conversion to prevent computation on every rerun
-        return df.to_csv().encode('utf-8')
-
-    csv = convert_df(ml.df)
-
-    st.download_button(
-        label="Download data as CSV",
-        data=csv,
-        file_name='phishing_legitimate_structured_data.csv',
-        mime='text/csv',
-    )
 
     st.subheader('Results')
     st.write('I used 5 different ML classifiers of scikit-learn and tested them implementing k-fold cross validation.'
