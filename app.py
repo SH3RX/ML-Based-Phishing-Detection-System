@@ -32,8 +32,12 @@ with st.expander("PROJECT DETAILS"):
     fig, ax = plt.subplots()
     ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff'])
     ax.axis('equal')
+
+    # Adding title and legend
+    ax.set_title('Phishing vs Legitimate Websites')
+    ax.legend(labels, loc='upper right')
+
     st.pyplot(fig)
-    # ----- !!!!! ----- #
 
     st.write('Features + URL + Label ==> Dataframe')
     st.markdown('Label is 1 for phishing, 0 for legitimate')
