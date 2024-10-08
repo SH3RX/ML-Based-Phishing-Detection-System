@@ -14,24 +14,11 @@ with st.expander("PROJECT DETAILS"):
     st.write('I used Supervised Learning to classify phishing and legitimate websites. '
              'The detection content-based approach is to focus on HTML of the websites. '
              )
-    st.write('For this educational project, '
-             'I created my own data set and defined features, some from the literature and some based on manual analysis. '
-             'I used requests library to collect data, BeautifulSoup module to parse and extract features. ')
 
     st.subheader('Data set')
     st.write('I used _"phishtank.org"_ & _"tranco-list.eu"_ as data sources.')
     st.write('Totally 24228 websites ==> **_12001_ legitimate** websites | **_12227_ phishing** websites')
     st.write('Data set was created in January 2024.')
-
-    # ----- THE PIE CHART ----- #
-    labels = 'Phishing', 'Legitimate'
-    phishing_rate = int(ml.phishing_df.shape[0] / (ml.phishing_df.shape[0] + ml.legitimate_df.shape[0]) * 100)
-    legitimate_rate = 100 - phishing_rate
-    sizes = [phishing_rate, legitimate_rate]
-    explode = (0.1, 0)
-    fig, ax = plt.subplots()
-    ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff'])
-    ax.axis('equal')
 
     # Adding title and legend
     ax.set_title('Phishing vs Legitimate Websites')
@@ -46,6 +33,7 @@ with st.expander("PROJECT DETAILS"):
     st.write('I used 5 different ML classifiers of scikit-learn and tested them implementing k-fold cross validation.'
              'Firstly obtained their confusion matrices, then calculated their accuracy, precision and recall scores.'
              'Comparison table is below:')
+    
     st.table(ml.df_results)
     st.write('RF --> Random Forest')
     st.write('SVM --> Support Vector Machine')
