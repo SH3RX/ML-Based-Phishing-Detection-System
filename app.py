@@ -20,9 +20,15 @@ with st.expander("PROJECT DETAILS"):
     st.write('Totally 24228 websites ==> **_12001_ legitimate** websites | **_12227_ phishing** websites')
     st.write('Data set was created in January 2024.')
 
-    # Adding title and legend
+    # fixing bug
+    labels = ['Phishing', 'Legitimate']
+    fig, ax = plt.subplots()
     ax.set_title('Phishing vs Legitimate Websites')
-    ax.legend(labels, loc='upper right')
+    
+    # data plot (pie chart)
+    data = [12227, 12001]  # Phishing and Legitimate counts
+    ax.pie(data, labels=labels, autopct='%1.1f%%', startangle=90)
+    ax.axis('equal') 
 
     st.pyplot(fig)
 
@@ -76,7 +82,7 @@ elif choice == 'Gaussian Naive Bayes':
 # URL input and check button with color modification
 url = st.text_input('Enter the URL', key='url_input', help='e.g., https://example.com')
 
-# Apply custom styling to the input box
+# custom style
 st.markdown("""
     <style>
         div[data-baseweb="input"] {
@@ -97,7 +103,7 @@ if st.button('Check!', key='check_button'):
             st.error(f"HTTP connection was not successful for the URL: {url}")
         else:
             soup = BeautifulSoup(response.content, "html.parser")
-            vector = [fe.create_vector(soup)]  # it should be a 2D array, so I added []
+            vector = [fe.create_vector(soup)] 
             result = model.predict(vector)
             if result[0] == 0:
                 st.success("This web page seems legitimate!")
@@ -106,5 +112,7 @@ if st.button('Check!', key='check_button'):
                 st.warning("Attention! This web page is a potential PHISHING!")
                 st.snow()
 
+    except re.exceptions.Timeout:
+        st.error(f"Request timed out. The URL {url} might be slow or unreachable.")
     except re.exceptions.RequestException as e:
         st.error(f"Error: {e}")
